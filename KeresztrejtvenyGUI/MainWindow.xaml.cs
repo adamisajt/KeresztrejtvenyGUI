@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -74,6 +75,38 @@ namespace KeresztrejtvenyGUI
                 tb.Text = "#";
             else
                 tb.Text = "-";
+        }
+
+
+        private void Mentes_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string index = cbIndex.SelectedItem.ToString();
+                string fajl = $"kr{index}.txt";
+
+                using (StreamWriter sw = new StreamWriter(fajl))
+                {
+                    for (int i = 0; i < sorok; i++)
+                    {
+                        string sor = "";
+
+                        for (int j = 0; j < oszlopok; j++)
+                        {
+                            TextBox tb = (TextBox)gridRacs.Children[i * oszlopok + j];
+                            sor += tb.Text;
+                        }
+
+                        sw.WriteLine(sor);
+                    }
+                }
+
+                MessageBox.Show("a keresztrejtveny mentese sikeres!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
     
