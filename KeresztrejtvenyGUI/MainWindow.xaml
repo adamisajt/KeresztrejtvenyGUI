@@ -6,7 +6,29 @@
         xmlns:local="clr-namespace:KeresztrejtvenyGUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="600">
-    <Grid>
+    <StackPanel Margin="15">
 
-    </Grid>
+        <StackPanel Orientation="Horizontal" Margin="0,10">
+            <TextBlock Text="keresztrejtveny merete [sor x oszlop]:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cbSor" Width="60" Margin="5"/>
+            <ComboBox x:Name="cbOszlop" Width="60" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="0,10">
+            <Button Content="Letrehozas"
+                Click="Letrehoz_Click"
+                Margin="0,0,10,0"/>
+
+            <Button Content="Mentes"
+                Click="Mentes_Click"
+                Margin="0,0,10,0"/>
+
+            <ComboBox x:Name="cbIndex" Width="50"/>
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <UniformGrid x:Name="gridRacs"/>
+        </ScrollViewer>
+
+    </StackPanel>
 </Window>
